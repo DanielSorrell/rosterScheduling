@@ -1,0 +1,14 @@
+<div>
+  <div class="text-center">
+    <h1>Sample schedules</h1>
+  </div>
+  <div class="d-flex flex-row flex-wrap justify-content-center w-75 mx-auto">
+    <div
+      *ngFor="let month of exampleDates"
+      (click)="fillSampleSchedule(month.start, month.end)"
+      class="schedule"
+    >
+      {{month.start.toLocaleDateString('default', {month: 'long'})}}
+    </div>
+  </div>
+</div>

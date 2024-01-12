@@ -1,0 +1,15 @@
+.changeColorDropdown {
+  width: fit-content;
+  display: inline-grid;
+  margin-left: 10%;
+}
+
+.colorOption {
+  font-size: 30px;
+}
+
+.colorOption:hover {
+  font-size: 45px;
+  cursor: pointer;
+}
+

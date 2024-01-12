@@ -1,0 +1,26 @@
+CREATE TABLE Employees (
+	Id uniqueidentifier,
+	PRIMARY KEY (Id),
+	PreferredName nvarchar(40),
+	FirstName nvarchar(40),
+	LastName nvarchar(40),
+	Address nvarchar(100),
+	NumOfAvailDaysAWeek int,
+	EverydayAvailability bit,
+	MondayAvailability bit,
+	TuesdayAvailability bit,
+	WednesdayAvailability bit,
+	ThursdayAvailability bit,
+	FridayAvailability bit,
+	SaturdayAvailability bit,
+	SundayAvailability bit
+);
+
+CREATE TABLE Positions (
+	Id uniqueidentifier,
+	PRIMARY KEY(Id),
+	Title nvarchar(40),
+	Rate float,
+	EmployeeID uniqueidentifier,
+	FOREIGN KEY (EmployeeId) REFERENCES Employees(Id),
+);

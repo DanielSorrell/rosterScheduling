@@ -1,0 +1,107 @@
+<div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger">
+  <span>{{this.errorMessage}}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div mat-dialog-content>
+ <div class="shiftInformationContainer">
+  <div class="d-flex flex-row">
+    <div class="text-center mx-auto">
+      <h1>{{data.shift.position}}</h1>
+      <h3>{{data.date.toDateString()}}</h3>
+      <h3>{{getTimeDisplay(data.shift.startTime)}} - {{getTimeDisplay(data.shift.endTime)}}</h3>
+    </div>
+    <div class="m-auto" role='button' (click)="data.setCurrentEmployee(data.employee.id)">
+      <img src="assets/userIcon.png" alt="user" width="40px" height="40px" class="mx-auto d-block">
+      <div>
+        {{data.employee.preferredName}}, {{data.employee.lastName}}
+      </div>
+    </div>
+  </div>
+  <div *ngIf="data.shift.breaks.length > 0">
+    Breaks:
+    <ul>
+      <li *ngFor="let break of data.shift.breaks">
+        {{getTimeDisplay(break.startTime)}} - {{getTimeDisplay(break.endTime)}}
+      </li>
+    </ul>
+  </div>
+ </div>
+
+  <div>
+
+    <div>
+      <mat-radio-group
+        aria-labelledby="example-radio-group-label"
+        class="example-radio-group"
+        [(ngModel)]="selectedFilter"
+      >
+        <mat-radio-button
+          class="example-radio-button"
+          [value]="'Replace'"
+        >
+          Replace
+        </mat-radio-button>
+        <mat-radio-button
+          class="example-radio-button"
+          [value]="'Remove'"
+        >
+          Remove employee
+        </mat-radio-button>
+        <mat-radio-button
+          class="example-radio-button"
+          [value]="'Delete'"
+        >
+          Delete shift
+        </mat-radio-button>
+      </mat-radio-group>
+      <div [ngSwitch]="selectedFilter">
+
+        <div *ngSwitchCase="'Replace'">
+          <div *ngIf="isLoading; else loaded">
+            <p>Looking for available employees</p>
+            <mat-spinner></mat-spinner>
+          </div>
+          <ng-template #loaded>
+            <div *ngIf="availableReplacementEmployees; else noAvailableEmployees">
+              <p class="text-center">Available employees to cover shift:</p>
+              <div class="availableEmployeesContainer bg-light text-dark">
+                <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="selectedReplacementEmployeeIndex">
+                <mat-radio-button
+                  class="example-radio-button"
+                  *ngFor="let employee of availableReplacementEmployees; let i = index"
+                  [attr.data-index]="i"
+                  [value]="i"
+                >
+                  {{employee.preferredName}}, {{employee.lastName}}
+                </mat-radio-button>
+              </mat-radio-group>
+              </div>
+            </div>
+            <ng-template #noAvailableEmployees>
+              <div class="text-center">
+                No employees available to cover shift
+              </div>
+            </ng-template>
+          </ng-template>
+        </div>
+
+        <div *ngSwitchCase="'Remove'">
+          <p class="text-center text-dark">Are you sure you want to remove {{this.data.employee.preferredName}} from this shift?</p>
+        </div>
+        <div *ngSwitchCase="'Delete'">
+          <p class="text-center text-dark">Are you sure you want to delete this shift?</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="fulfillOption()" mat-button mat-dialog-close cdkFocusInitial>{{selectedFilter}}</button>
+</div>

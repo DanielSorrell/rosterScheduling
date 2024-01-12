@@ -1,0 +1,263 @@
+<div *ngIf="isLoading; else loaded" class="row h-75 w-100">
+  <div class="my-auto">
+    <div class="justify-content-center text-center">
+      <p>Loading schedule...</p>
+    </div>
+    <div class="d-flex justify-content-center">
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+</div>
+
+<ng-template #loaded>
+  <div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger alert-dismissible errorOnHover" role="alert">
+    <span>{{this.errorMessage}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div class="text-center mx-auto">
+    <h1><input class="nameInput text-center" type="text" [(ngModel)] = "scheduleName" id="scheduleName" name="scheduleName" placeholder="Schedule Name"></h1>
+    <button *ngIf="unsavedChanges" (click)="saveChanges()" class="btn btn-dark mx-auto">Save changes</button>
+  </div>
+
+  <div class="columnsContainer">
+    <div class="sideColumn">
+      <div class="stickyHeader">
+        <h4>Filter employees</h4>
+        <div>
+          <mat-form-field>
+            <mat-label>Day(s)</mat-label>
+            <mat-select multiple [formControl]="selectedFilterDays" (selectionChange)="filterEmployeeList()">
+              <mat-option value="Mon">Monday</mat-option>
+              <mat-option value="Tue">Tuesday</mat-option>
+              <mat-option value="Wed">Wednesday</mat-option>
+              <mat-option value="Thu">Thursday</mat-option>
+              <mat-option value="Fri">Friday</mat-option>
+              <mat-option value="Sat">Saturday</mat-option>
+              <mat-option value="Sun">Sunday</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <section [formGroup]="positionFilters">
+            <app-position-filter
+              *ngFor="let position of positionList.values()"
+              [position]="position"
+              [color]="positionFilterColors.get(position)"
+              [positionFilters]="positionFilters"
+              [colorSelection]="availablePositionFilterColors"
+              (changeColorRequest)="changePositionFilterColor($event.position, $event.oldColor, $event.newColor)"
+              (filter)="filterEmployeeList()"
+              >
+            </app-position-filter>
+          </section>
+          <div class="filteredEmployeesContainer container mt-4 w-50" *ngIf="employeeFilteredList.size > 0">
+            <div
+              *ngFor="let employee of employeeFilteredList.entries(); index as i"
+              (click)="setCurrentEmployee(employee[0])"
+              class="filteredEmployee mb-3"
+            >
+              <span>
+                <img src="assets/userIcon.png" alt="user" width="40px" height="40px">
+              </span>
+              <span>
+                {{(this.employees.get(employee[0]))?.preferredName}}
+              </span>
+              <span
+                *ngFor="let position of employee[1]"
+                [ngStyle]="{
+                  backgroundColor: positionFilterColors.get(position),
+                  color: nonDefaultTextColors.has(this.positionFilterColors.get(position)!)
+                  ? 'white' : 'black'
+                }"
+                class="mx-1"
+              >
+                {{position}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="previousWeekView" class="leftSideArrow">
+      <button class="btn btn-dark stickyHeader" (click)="setCurrentWeekPrev()">&larr;</button>
+    </div>
+
+    <div class="mainColumn" [ngStyle]="{marginRight: !nextWeekView ? '2%' : null}">
+      <div class="d-flex flex-row">
+        <div class="scheduleInfoContainer mx-auto my-2 p-2">
+          <div>
+            Current week total hours: {{this.currentScheduleTotalHours / 60}}
+          </div>
+          <div>
+            Current week payout: ${{(this.currentScheduleTotalPayout).toFixed(2)}}
+          </div>
+        </div>
+        <div class="scheduleInfoContainer mx-auto my-2 p-2">
+          <div>
+            Entire schedule total hours: {{this.entireScheduleHours / 60}}
+          </div>
+          <div>
+            Entire schedule payout: ${{(this.entireSchedulePayout).toFixed(2)}}
+          </div>
+        </div>
+      </div>
+
+      <table class="table table-striped">
+        <thead class="stickyHeader">
+          <tr>
+            <th (click)="openNotesDialog()" role='button' class="text-center">
+              <img src="assets/notesIcon.png" alt="user" width="40px" height="40px">
+            </th>
+            <th *ngFor="let day of currentScheduleWeek" class="text-center">{{day.day}}</th>
+          </tr>
+        </thead>
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+
+          <tr>
+            <td> </td>
+            <td *ngFor="let day of currentScheduleWeek" class="shiftsContainer">
+              <div *ngFor="let unscheduledShift of unfulfilledShiftsMap.get(day.date.toDateString())"
+                [ngStyle]="{
+                  backgroundColor: this.positionFilterColors.get(unscheduledShift.position),
+                  color: nonDefaultTextColors.has(this.positionFilterColors.get(unscheduledShift.position)!) ? 'white' : 'black',
+                  minimumWidth: '100px',
+                  minimumHeight: '80px',
+                  marginTop: '10%',
+                  marginBottom: '10%',
+                  border: '3px solid black',
+                  cursor: 'pointer'
+                }"
+                class="text-center p-2"
+                (click)="openFulfillShiftDialog(day.date, unscheduledShift)"
+              >
+                <div>
+                  <b>{{unscheduledShift.position}}</b>
+                  <div>
+                    <div>
+                      {{getTimeDisplay(unscheduledShift.startTime)}}
+                    </div>
+                    <div>
+                      -
+                    </div>
+                    <div>
+                      {{getTimeDisplay(unscheduledShift.endTime)}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+          <tr *ngFor="let scheduledEmployee of currentWeekScheduledEmployees; index as i" cdkDrag cdkDragLockAxis="y" [ngClass]="{'scheduleEmpBackground': i % 2 == 0 || i == 0, 'altScheduleEmpBackground': i % 2 !== 0}">
+            <td class="scheduledEmployeeName" (click)="setCurrentEmployee(scheduledEmployee)">
+              <div>
+                <b>{{scheduledEmployeesMap.get(scheduledEmployee)!.employeeInfo.preferredName}}</b>
+              </div>
+            </td>
+            <td *ngFor="let day of currentScheduleWeek" class="shiftsContainer">
+              <div *ngFor="let scheduledShift of fulfilledShiftsMap.get(day.date.toDateString())">
+                <div *ngIf="scheduledShift.scheduledEmployeeID == scheduledEmployee"
+                  [ngStyle]="{
+                    backgroundColor: this.positionFilterColors.get(scheduledShift.position),
+                    color: nonDefaultTextColors.has(this.positionFilterColors.get(scheduledShift.position)!) ? 'white' : 'black',
+                    minimumWidth: '100px',
+                    minimumHeight: '80px',
+                    marginTop: '10%',
+                    marginBottom: '10%',
+                    border: '3px solid black',
+                    cursor: 'pointer'
+                  }"
+                  class="text-center p-2"
+                  (click)="openEditShiftDialog(scheduledEmployeesMap.get(scheduledEmployee)!.employeeInfo, day.date, scheduledShift)"
+                >
+                  <div class="d-flex flex-row mx-auto">
+                    <div class="my-auto">
+                      <img src="assets/userIcon.png" alt="user" width="40px" height="40px">
+                    </div>
+                    <div class="mx-auto">
+                      <b>{{scheduledShift.position}}</b>
+                      <div>
+                        <div>
+                          {{getTimeDisplay(scheduledShift.startTime)}}
+                        </div>
+                        <div>
+                          -
+                        </div>
+                        <div>
+                          {{getTimeDisplay(scheduledShift.endTime)}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="nextWeekView" class="rightSideArrow">
+      <button class="btn btn-dark stickyHeader" (click)="setCurrentWeekNext()">&rarr;</button>
+    </div>
+
+    <div class="sideColumn" *ngIf="showEmployeeView">
+      <div class="employeeInfoPanel stickyHeader">
+        <div class="employeeInfoHeader">
+          <div class="currentEmployeeNameHeader">
+            <span class="position-absolute top-0 start-0"><button type="button" class="closeButtonBorder btn-close p-1 m-1" data-bs-dismiss="alert" aria-label="Close" (click)="closeEmployeeView()"></button></span>
+            <img src="assets/userIcon.png" alt="user" width="40px" height="40px" class="mx-auto d-block">
+            <h3 class="pb-2">{{currentEmployee.employeeInfo.preferredName}}, {{currentEmployee.employeeInfo.lastName}}</h3>
+          </div>
+          <div class="d-flex flex-row">
+            <div class="mx-2">
+              <h5>Positions:</h5>
+              <ul>
+                <li *ngFor="let position of employeePositions.get(currentEmployee.employeeInfo.id)">
+                  {{position}}
+                </li>
+              </ul>
+            </div>
+            <div class="mx-2">
+              <h5>Availability:</h5>
+              <li *ngIf="currentEmployee.employeeInfo.everydayAvailability">
+                Everyday
+              </li>
+              <ul *ngIf="!currentEmployee.employeeInfo.everydayAvailability">
+                <li *ngIf="currentEmployee.employeeInfo.mondayAvailability">
+                  Monday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.tuesdayAvailability">
+                  Tuesday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.wednesdayAvailability">
+                  Wednesday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.thursdayAvailability">
+                  Thursday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.fridayAvailability">
+                  Friday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.saturdayAvailability">
+                  Saturday
+                </li>
+                <li *ngIf="currentEmployee.employeeInfo.sundayAvailability">
+                  Sunday
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="p-2">
+          <div>Total hours: <b>{{currentEmployee.totalMinutes / 60}}</b></div>
+          <div>Total payout: <b>${{(currentEmployee.totalPayout).toFixed(2)}}</b></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</ng-template>

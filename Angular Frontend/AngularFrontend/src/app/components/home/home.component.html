@@ -1,0 +1,134 @@
+<body>
+
+<main>
+  <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
+    <div class="col-md-5 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-normal" style="color: #e88504">Roster, the easy employee scheduling app</h1>
+      <p class="lead fw-normal">Create and manage detailed and organized schedules within a couple of clicks.</p>
+      <a class="btn btn-outline-secondary" routerLink="schedules/create">Start creating</a>
+    </div>
+  </div>
+
+  <div class="fadeIn d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Use helpful tools to fill out your schedules</h2>
+      </div>
+      <div class="d-md-flex flex-md-equal">
+        <p class="lead">Freely navigate and customize any schedule</p>
+        <p class="lead">Easily find or replace employees</p>
+      </div>
+      <div class="d-md-flex flex-md-equal mb-5">
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid white'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/1aCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid white'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/1bCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fadeIn d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Create and update organized schedules</h2>
+      </div>
+      <div class="d-md-flex flex-md-equal">
+        <p class="lead">Set date range and shifts</p>
+        <p class="lead">Get detailed and organized schedule data for your employees</p>
+      </div>
+      <div class="d-md-flex flex-md-equal mb-5">
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid rgb(33,37,41)', backgroundColor: 'rgb(33,37,41)'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/2bCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid rgb(33,37,41)', backgroundColor: 'rgb(33,37,41)'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/2aCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fadeIn d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-dark me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Manage employees and positions</h2>
+      </div>
+
+      <p class="lead">With user friendly dashboards</p>
+      <div class="d-md-flex flex-md-equal mb-5">
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid white'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/3aCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="mx-5">
+          <video class="dualVideoDisplay" [ngStyle]="{border: '3px solid white'}" oncanplay="this.play()" onloadedmetadata="this.muted = true" autoplay loop>
+            <source src="assets/home page/3bCrop.mp4" type="video/mp4" />
+          </video>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="fadeIn d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
+    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
+      <div class="my-3 py-3">
+        <h2 class="display-5">Detailed need-finding and error checking</h2>
+      </div>
+      <div class="d-md-flex flex-md-equal">
+        <p class="lead">We'll do all the hard work and error checking for you!</p>
+      </div>
+      <div class="d-md-flex flex-md-equal">
+        <div class="mx-auto">
+          <div [ngStyle]="{width: 'fit-content', border: '3px solid rgb(33,37,41)', borderRadius: '20%', backgroundColor: 'rgb(33,37,41)'}" class="p-2 mx-auto">
+            <div class="mx-auto alert alert-danger errorOnHover" [ngStyle]="{width: 'fit-content'}" role="alert">
+              New employees require at least 1 position.
+            </div>
+            <div class="mx-auto alert alert-danger errorOnHover" [ngStyle]="{width: 'fit-content'}" role="alert">
+              New employees require at least 1 day of availability.
+            </div>
+            <div class="mx-auto alert alert-danger errorOnHover" [ngStyle]="{width: 'fit-content'}" role="alert">
+              Requested break will overlap an existing break and therefore cannot be added.
+            </div>
+            <div class="mx-auto alert alert-danger errorOnHover" [ngStyle]="{width: 'fit-content'}" role="alert">
+              Requested position title is already taken.
+            </div>
+            <div class="mx-auto alert alert-danger errorOnHover" [ngStyle]="{width: 'fit-content'}" role="alert">
+              Required fields cannot be left blank.
+            </div>
+          </div>
+        </div>
+        <div class="mx-auto mb-5">
+          <div [ngStyle]="{width: 'fit-content', border: '3px solid rgb(33,37,41)', borderRadius: '5%', backgroundColor: 'rgb(33,37,41)'}" class="mx-auto p-2">
+            <img src="assets/home page/4b.PNG" alt="user" width="400px" height="400px" class="p-1 mx-3">
+            <img src="assets/home page/4a.PNG" alt="user" width="400px" height="400px" class="p-1 mx-3">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<footer class="container py-5">
+  <div class="row col-md-5 mx-auto">
+    <a class="btn btn-outline-secondary" routerLink="schedules/create">Start creating</a>
+  </div>
+</footer>
+
+
+    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+
+  </body>

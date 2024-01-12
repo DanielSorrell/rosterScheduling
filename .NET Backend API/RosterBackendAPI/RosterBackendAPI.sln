@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RosterBackendAPI", "RosterBackendAPI\RosterBackendAPI.csproj", "{2002734B-6D1C-4031-85F1-66FDD04F685F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2002734B-6D1C-4031-85F1-66FDD04F685F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2002734B-6D1C-4031-85F1-66FDD04F685F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2002734B-6D1C-4031-85F1-66FDD04F685F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2002734B-6D1C-4031-85F1-66FDD04F685F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {75FBA7DA-ADA9-4FD2-B8A3-C897CE0E1852}
+	EndGlobalSection
+EndGlobal

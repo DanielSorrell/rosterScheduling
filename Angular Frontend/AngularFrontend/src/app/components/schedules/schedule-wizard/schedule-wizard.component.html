@@ -1,0 +1,223 @@
+<div class="my-5">
+
+  <div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger alert-dismissible errorOnHover" role="button">
+    <span>{{this.errorMessage}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <mat-stepper linear #stepper>
+
+    <mat-step [stepControl]="range" [editable]="isEditable">
+      <div class="text-center">
+        <form [formGroup]="range">
+          <ng-template matStepLabel>Set schedule range</ng-template>
+          <mat-form-field>
+            <mat-label>Enter a date range</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Start date">
+              <input matEndDate formControlName="end" placeholder="End date">
+            </mat-date-range-input>
+            <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+
+            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+          </mat-form-field>
+          <div class="d-flex flex-row justify-content-center">
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </div>
+    </mat-step>
+
+    <mat-step [stepControl]="shiftFormGroup" [editable]="isEditable">
+      <form [formGroup]="shiftFormGroup">
+        <ng-template matStepLabel>Create shifts</ng-template>
+          <div class="d-flex flex-row">
+
+            <div class="mx-auto w-50">
+              <h1 class="text-center">Create shifts</h1>
+              <div>
+                <div class="d-flex flex-row justify-content-center">
+                  <div>
+                    <mat-form-field>
+                      <mat-label>Start:</mat-label>
+                      <input matInput type="time"
+                      formControlName="shiftStartTime"
+                      name="shiftStartTime"
+                      >
+                    </mat-form-field>
+                  </div>
+                  <div>
+                    <mat-form-field>
+                      <mat-label>End:</mat-label>
+                      <input matInput type="time"
+                      formControlName="shiftEndTime"
+                      name="shiftEndTime"
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="d-flex flex-row justify-content-center">
+                  <mat-form-field>
+                    <mat-label>Number of shifts per week:</mat-label>
+                    <input matInput type="number"
+                    formControlName="instances"
+                    name="instances"
+                    value="1"
+                    >
+                  </mat-form-field>
+                </div>
+
+                <div class="d-flex flex-row">
+                  <div class="mx-auto">
+                    <h3>Days:</h3>
+                    <div>
+                      <mat-checkbox
+                        formControlName="everyday"
+                        name="everyday"
+                      >
+                        Everyday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="monday"
+                        name="monday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Monday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="tuesday"
+                        name="tuesday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Tuesday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="wednesday"
+                        name="wednesday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Wednesday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="thursday"
+                        name="thursday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Thursday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="friday"
+                        name="friday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Friday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="saturday"
+                        name="saturday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Saturday
+                      </mat-checkbox>
+                    </div>
+                    <div>
+                      <mat-checkbox
+                        formControlName="sunday"
+                        name="sunday"
+                        [checked]="this.shiftFormGroup.value.everyday ? false: true"
+                        [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+                      >
+                        Sunday
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <div class="mx-auto">
+                    <h3>Position:</h3>
+                    <div>
+                      <mat-radio-group aria-label="Select an option" formControlName="position">
+                        <mat-radio-button class="d-block" *ngFor="let position of positions" [value]="position">
+                          {{position}}
+                        </mat-radio-button>
+                      </mat-radio-group>
+                    </div>
+                  </div>
+
+                  <div *ngIf="this.breaks.length > 0" class="mx-auto">
+                    <h3>Breaks:</h3>
+                    <ul *ngFor="let break of this.breaks">
+                      <li>
+                        {{getTimeDisplay(break.startTime)}} - {{getTimeDisplay(break.endTime)}}
+                        <button class="btn btn-danger mx-auto" (click)="deleteBreak(break.startTime, break.endTime)">Delete</button>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="d-flex flex-row mt-3">
+                  <button class="btn btn-primary mx-auto" (click)="addShift()">Add shift</button>
+                  <button class="btn btn-dark mx-auto" (click)="openDialog()">
+                    <span *ngIf="this.breaks.length > 0; else noBreaks">
+                      Add more breaks
+                    </span>
+                    <ng-template #noBreaks>
+                      Add break
+                    </ng-template>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="mx-auto w-50">
+              <h1 class="text-center">Shifts</h1>
+              <div class="shiftColumns d-flex flex-row flex-wrap justify-content-center">
+                <ul *ngFor="let shift of this.shifts; index as i" class="list-unstyled">
+                  <app-shift-creator [shift]="shift" (edit)="editShift($event)" (setError)="displayShiftError($event)" (delete)="deleteShift(shift)" [index]="i" [positions]="positions"></app-shift-creator>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        <div class="d-flex flex-row justify-content-center">
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Next</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Done</ng-template>
+      <div class="text-center">
+        <p>You are now done.</p>
+        <div class="d-flex flex-row justify-content-center">
+          <button mat-button (click)="submit()">Create schedule</button>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+      </div>
+    </mat-step>
+
+  </mat-stepper>
+
+</div>

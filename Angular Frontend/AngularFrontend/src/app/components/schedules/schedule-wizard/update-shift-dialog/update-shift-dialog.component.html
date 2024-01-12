@@ -1,0 +1,173 @@
+<div>
+  <div *ngIf="updatedShift.error" (click)="closeErrorMessage()" class="alert alert-danger alert-dismissible errorOnHover" role="alert">
+    <span>{{this.errorMessage}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div mat-dialog-content>
+    <h1 mat-dialog-title class="text-center">Edit shift</h1>
+    <form [formGroup]="shiftFormGroup">
+
+      <div class="d-flex flex-row justify-content-center">
+        <div>
+          <mat-form-field>
+            <mat-label>Start:</mat-label>
+            <input matInput type="time"
+            formControlName="shiftStartTime"
+            name="shiftStartTime"
+            (change)="detectUnsavedTimeChanges()"
+            >
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field>
+            <mat-label>End:</mat-label>
+            <input matInput type="time"
+            formControlName="shiftEndTime"
+            name="shiftEndTime"
+            (change)="detectUnsavedTimeChanges()"
+            >
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="d-flex flex-row justify-content-center">
+        <mat-form-field>
+          <mat-label>Number of shifts per week:</mat-label>
+          <input matInput type="number"
+          formControlName="instances"
+          name="instances"
+          >
+        </mat-form-field>
+      </div>
+
+      <div class="d-flex flex-row">
+        <div class="mx-auto">
+          <h3>Days:</h3>
+          <div>
+            <mat-checkbox
+              formControlName="everyday"
+              name="everyday"
+            >
+              Everyday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="monday"
+              name="monday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Monday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="tuesday"
+              name="tuesday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Tuesday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="wednesday"
+              name="wednesday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Wednesday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="thursday"
+              name="thursday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Thursday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="friday"
+              name="friday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Friday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="saturday"
+              name="saturday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Saturday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              formControlName="sunday"
+              name="sunday"
+              [checked]="this.shiftFormGroup.value.everyday ? false: true"
+              [disabled]="this.shiftFormGroup.value.everyday ? true: false"
+            >
+              Sunday
+            </mat-checkbox>
+          </div>
+        </div>
+        <div class="mx-auto">
+          <h3>Positions:</h3>
+          <mat-radio-group aria-label="Select an option" formControlName="position">
+            <mat-radio-button class="d-block" *ngFor="let position of data.positions" [value]="position">
+              {{position}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div *ngIf="this.data.shift.breaks.length > 0" class="mx-auto">
+          <h3 class="text-center">Breaks:</h3>
+          <div *ngFor="let break of this.shiftFormGroup.value.breaks; index as i" class="d-flex mb-3">
+            <mat-form-field>
+              <mat-label>Start:</mat-label>
+              <input matInput type="time"
+              name="startTime"
+              [(ngModel)] = 'this.shiftFormGroup.value.breaks![i].startTime'
+              [ngModelOptions]="{standalone: true}"
+              (change)="detectUnsavedTimeChanges()"
+              >
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label>End:</mat-label>
+              <input matInput type="time"
+              name="endTime"
+              [(ngModel)] = 'this.shiftFormGroup.value.breaks![i].endTime'
+              [ngModelOptions]="{standalone: true}"
+              (change)="detectUnsavedTimeChanges()"
+              >
+            </mat-form-field>
+            <div class="deleteButtonContainer">
+              <button (click)="deleteBreak(break)" class="btn btn-danger">&#10006;</button>
+            </div>
+          </div>
+          <button (click)="showNewBreak()" *ngIf="canAddBreak" class="btn btn-dark text-center mx-auto">
+            Add another break
+          </button>
+        </div>
+        <button (click)="showNewBreak()" *ngIf="canAddBreak && this.shiftFormGroup.value.breaks?.length! < 1" class="btn btn-dark">
+          Add break
+        </button>
+      </div>
+    </form>
+   </div>
+    <div mat-dialog-actions>
+      <button class="text-center mx-auto" (click)="update()" mat-button cdkFocusInitial>Update</button>
+      <button class="text-center mx-auto" mat-button mat-dialog-close>Cancel</button>
+    </div>
+
+</div>

@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <p>Are you sure you want to remove <b>{{this.data.employee.preferredName}}, {{this.data.employee.lastName}}</b> as a <b>{{this.data.position}}</b>?</p>
+</div>
+<div mat-dialog-actions>
+  <button (click)="removeEmployee()" mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

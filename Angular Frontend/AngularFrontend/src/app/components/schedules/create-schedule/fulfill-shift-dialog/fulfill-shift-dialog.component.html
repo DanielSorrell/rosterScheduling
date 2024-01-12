@@ -1,0 +1,86 @@
+<div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger">
+  <span>{{this.errorMessage}}</span>
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+<div mat-dialog-content>
+  <div class="shiftInformationContainer">
+    <div>
+      <div class="text-center">
+      <h1 mat-dialog-title>{{data.shift.position}}</h1>
+      <h3>{{data.date.toDateString()}}</h3>
+      <h3>{{getTimeDisplay(data.shift.startTime)}} - {{getTimeDisplay(data.shift.endTime)}}</h3>
+    </div>
+    </div>
+    <div *ngIf="data.shift.breaks.length > 0">
+      Breaks:
+      <ul>
+        <li *ngFor="let break of data.shift.breaks">
+          {{getTimeDisplay(break.startTime)}} - {{getTimeDisplay(break.endTime)}}
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <mat-radio-group
+    aria-labelledby="example-radio-group-label"
+    class="example-radio-group"
+    [(ngModel)]="selectedFilter"
+  >
+    <mat-radio-button
+      class="example-radio-button"
+      [value]="'Fulfill'"
+    >
+      Fulfill
+    </mat-radio-button>
+    <mat-radio-button
+      class="example-radio-button"
+      [value]="'Delete'"
+    >
+      Delete
+    </mat-radio-button>
+  </mat-radio-group>
+
+  <div [ngSwitch]="selectedFilter">
+
+    <div *ngSwitchCase="'Fulfill'">
+      <p class="text-center">Available employees to cover shift:</p>
+      <div *ngIf="!isLoading; else loading">
+        <div *ngIf="availableEmployees; else noAvailableEmployees" class="availableEmployeesContainer bg-light text-dark">
+          <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="selectedAvailableEmployeeIndex">
+            <mat-radio-button
+              class="example-radio-button"
+              *ngFor="let employee of availableEmployees; let i = index"
+              [attr.data-index]="i"
+              [value]="i"
+            >
+              {{employee.preferredName}}, {{employee.lastName}}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <ng-template #noAvailableEmployees>
+          <div>
+            No employees available to cover shift
+          </div>
+        </ng-template>
+      </div>
+      <ng-template #loading>
+        <p>Looking for available employees</p>
+        <mat-spinner></mat-spinner>
+      </ng-template>
+    </div>
+
+    <div *ngSwitchCase="'Delete'">
+      <p class="text-center text-dark">Are you sure you want to delete this shift?</p>
+    </div>
+
+  </div>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button (click)="selectOption()" mat-button mat-dialog-close cdkFocusInitial>{{selectedFilter}}</button>
+</div>

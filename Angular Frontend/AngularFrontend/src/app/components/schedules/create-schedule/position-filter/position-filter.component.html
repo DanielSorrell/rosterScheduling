@@ -1,0 +1,40 @@
+<div [formGroup]="positionFilters">
+  <mat-checkbox
+    class="positionFilterOption"
+    [formControlName]='position'
+    (change)="emitFilterChange()"
+  >
+  {{position}}
+  </mat-checkbox>
+
+  <span
+    [ngStyle]="{
+      backgroundColor: color,
+      color: color
+    }"
+  >
+    lll
+  </span>
+  <div>
+    <mat-expansion-panel class="changeColorDropdown">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Change color
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      Colors:
+      <div>
+        <span
+          *ngFor="let color of colorSelection"
+          [ngStyle]="{color: color}"
+          class="colorOption"
+          (click)="emitColorChange(color)"
+        >
+          &#9673;
+        </span>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</div>
+
+

@@ -1,0 +1,13 @@
+.mainContainer {
+  border: 3px solid black;
+}
+
+.errorOnHover:hover {
+  background-color: lightgray;
+  border-color: black;
+  cursor: pointer;
+}
+
+.selectionContainer {
+  border: 3px solid black;
+}

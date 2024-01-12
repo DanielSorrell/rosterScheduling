@@ -1,0 +1,7 @@
+<div mat-dialog-content>
+  <p>Are you sure you want to delete <b>{{this.data.position}}</b> from positions?</p>
+</div>
+<div mat-dialog-actions>
+  <button (click)="deletePosition()" mat-button mat-dialog-close cdkFocusInitial>Yes</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</div>

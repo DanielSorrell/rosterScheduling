@@ -1,0 +1,14 @@
+.savedSchedule {
+  border: 3px solid black;
+  padding: 1%;
+  width: fit-content;
+  margin: 2%;
+  text-align: center;
+  cursor: pointer;
+  background-color: rgb(255, 187, 62);
+  font-size: x-large;
+}
+
+.savedSchedule:hover{
+  transform: scale(1.1);
+}

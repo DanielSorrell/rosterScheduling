@@ -1,0 +1,58 @@
+
+<div class="mainContainer container my-5 p-3 bg-light">
+  <h1 class="mb-3">Create position</h1>
+
+  <div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger alert-dismissible errorOnHover" role="alert">
+    <span>{{this.errorMessage}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <form #form="ngForm">
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">*Title</label>
+      <input type="text" class="form-control"
+      [(ngModel)] = "positionDetails.title" id="title" name="title">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">*Hourly rate</label>
+      <input type="text" class="form-control"
+      [(ngModel)] = "positionDetails.rate" id="rate" name="rate">
+    </div>
+
+  </form>
+
+  <div>
+    <div class="mx-auto mb-3" style="width: fit-content;">
+      <p class="text-center">Add employees:</p>
+      <input type="text" [(ngModel)] = "searchEmployeesValue" (ngModelChange)="searchEmployees()">
+    </div>
+    <div class="d-flex flex-row">
+      <div class="mx-auto employeeContainer">
+        <div *ngFor="let employee of filteredEmployees" class="p-1 bg-white">
+          <mat-checkbox
+            [(ngModel)] = "employee.selected"
+            [name]="employee.employee"
+            (change)="selectEmployee(employee.employee)"
+          >
+            {{employees.get(employee.employee)?.preferredName}}, {{employees.get(employee.employee)?.lastName}}
+          </mat-checkbox>
+        </div>
+      </div>
+      <div class="mx-auto employeeContainer" *ngIf="selectedEmployees.length > 0">
+        <div *ngFor="let employee of selectedEmployees" class="p-2 bg-white">
+          <mat-checkbox
+            [(ngModel)] = "employee.selected"
+            [name]="employee.employee"
+            (change)="unselectEmployee(employee.employee)"
+          >
+            {{employees.get(employee.employee)?.preferredName}}, {{employees.get(employee.employee)?.lastName}}
+          </mat-checkbox>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="text-center mt-4">
+    <button type="submit" class="btn btn-primary" (click)="submit()">Add</button>
+  </div>
+</div>

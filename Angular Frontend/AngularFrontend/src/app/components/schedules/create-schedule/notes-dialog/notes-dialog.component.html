@@ -1,0 +1,19 @@
+<div mat-dialog-content>
+  <h1 mat-dialog-title class="text-center">Notes</h1>
+
+  <div>
+    <textarea
+      class="fillWidth d-block mx-auto"
+      id="notes"
+      name="notes"
+      [(ngModel)] = "notes"
+      (change)="updateNotes()"
+      rows="9"
+    >
+    </textarea>
+  </div>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div>

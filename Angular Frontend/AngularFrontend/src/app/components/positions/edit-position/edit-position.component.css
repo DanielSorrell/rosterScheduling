@@ -1,0 +1,19 @@
+.mainContainer {
+  border: 3px solid black;
+}
+
+.errorMessagesContainer {
+  position: sticky;
+  top: 0;
+}
+
+.errorOnHover:hover {
+  background-color: lightgray;
+  border-color: black;
+  cursor: pointer;
+}
+
+.employeeContainer {
+  border: 3px solid black;
+  height: fit-content;
+}

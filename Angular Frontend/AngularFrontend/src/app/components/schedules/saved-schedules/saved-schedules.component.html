@@ -1,0 +1,17 @@
+<div>
+  <div *ngIf="savedSchedules.length > 0; else noSchedules" class="text-center">
+    <h1>Saved schedules</h1>
+    <div class="d-flex flex-row flex-wrap justify-content-center w-75 mx-auto">
+      <div *ngFor="let schedule of savedSchedules" (click)="openSchedule(schedule)" class="savedSchedule">
+        <p>{{schedule.start.toDateString()}} - {{schedule.end.toDateString()}}</p>
+        <p><b>{{schedule.name}}</b></p>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noSchedules>
+    <div class="text-center mt-5">
+      <h1>No saved schedules to display</h1>
+    </div>
+  </ng-template>
+</div>

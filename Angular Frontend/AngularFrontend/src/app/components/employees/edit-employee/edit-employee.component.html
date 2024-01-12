@@ -1,0 +1,129 @@
+<div *ngIf="isLoading; else loaded">
+  <p>Loading employee</p>
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #loaded>
+  <div class="mainContainer container p-3 my-5 bg-light">
+    <h1 class="mb-3">Update employee</h1>
+
+    <div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger">
+      {{this.errorMessage}}
+    </div>
+
+    <form #form="ngForm" (ngSubmit)="updateEmployee()">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Employee ID</label>
+        <input type="text" class="form-control"
+        [(ngModel)] = "employeeDetails.id" id="id" name="id" readonly>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Preferred name</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "employeeDetails.preferredName" id="preferredName" name="preferredName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">*First name</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "employeeDetails.firstName" id="firstName" name="firstName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">*Last name</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "employeeDetails.lastName" id="lastName" name="lastName">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">*Address</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "employeeDetails.address" id="address" name="address">
+      </div>
+
+      <div class="d-flex flex-row">
+        <div class="mainContainer mx-auto p-3 bg-white">
+          <h3 class="text-center mb-3">Availability:</h3>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.mondayAvailability"
+              name="mondayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Monday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.tuesdayAvailability"
+              name="tuesdayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Tuesday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.wednesdayAvailability"
+              name="wednesdayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Wednesday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.thursdayAvailability"
+              name="thursdayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Thursday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.fridayAvailability"
+              name="fridayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Friday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.saturdayAvailability"
+              name="saturdayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Saturday
+            </mat-checkbox>
+          </div>
+          <div>
+            <mat-checkbox
+              [(ngModel)] = "employeeDetails.sundayAvailability"
+              name="sundayAvailability"
+              (change)="setUnsavedChanges()"
+            >
+              Sunday
+            </mat-checkbox>
+          </div>
+        </div>
+        <div class="mainContainer mx-auto p-3 bg-white">
+          <h3 class="mb-3">Positions:</h3>
+          <div *ngFor="let position of this.positions">
+            <mat-checkbox
+              [(ngModel)]="position.selected"
+              [name]="position.title"
+              (change)="setUnsavedChanges()"
+            >
+              {{position.title}}
+            </mat-checkbox>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-3">
+        <button type="button" class="btn btn-dark mx-5" (click)="cancel()">Cancel</button>
+        <button *ngIf="unsavedChanges" type="submit" class="btn btn-primary mx-5">Update</button>
+        <button type="button" class="btn btn-danger mx-5" (click)="deleteEmployee(employeeDetails.id)">Delete employee</button>
+      </div>
+    </form>
+  </div>
+
+</ng-template>

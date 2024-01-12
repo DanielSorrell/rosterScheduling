@@ -1,0 +1,24 @@
+<div>
+  <div *ngIf="error" (click)="closeErrorMessage()" class="alert alert-danger alert-dismissible errorOnHover" role="alert">
+    <span>{{this.errorMessage}}</span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+
+  <div mat-dialog-content>
+    <h1 mat-dialog-title>Add break</h1>
+    <form>
+      <mat-form-field>
+        <mat-label>Start:</mat-label>
+        <input [formControl]="start" matInput type="time" >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>End:</mat-label>
+        <input [formControl]="end" matInput type="time" >
+      </mat-form-field>
+    </form>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="setBreak()">Add break</button>
+  </div>
+</div>

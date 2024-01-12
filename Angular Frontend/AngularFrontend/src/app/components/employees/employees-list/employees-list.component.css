@@ -1,0 +1,27 @@
+table {
+  border-top: 3px solid black;
+  border-left: 3px solid black;
+  border-right: 3px solid black;;
+}
+
+.stickyHeader {
+  position: sticky;
+  top: 0;
+}
+
+.messagesContainer {
+  position: sticky;
+  top: 0;
+}
+
+.errorOnHover:hover {
+  transform: scale(1.2);
+  background-color: lightgray;
+  border-color: black;
+  cursor: pointer;
+}
+
+.updateButton {
+  display: block;
+  margin: auto;
+}

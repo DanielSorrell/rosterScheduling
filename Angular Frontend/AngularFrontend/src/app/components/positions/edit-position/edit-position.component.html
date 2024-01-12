@@ -1,0 +1,95 @@
+<div *ngIf="isLoading; else loaded">
+  <p>Loading position</p>
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #loaded>
+
+  <div class="mainContainer container my-5 p-3 bg-light">
+
+    <div *ngIf="error" class="errorMessagesContainer">
+      <div *ngFor="let error of errorMessages" (click)="closeErrorMessage(error)" class="alert alert-danger alert-dismissible errorOnHover" role="alert">
+        <span>{{error}}</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    </div>
+
+    <h1 class="mb-3">Edit position</h1>
+
+    <form #form="ngForm" (ngSubmit)="updatePosition()">
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">*Title</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "positionDetails.title" id="title" name="title">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">*Hourly rate</label>
+        <input type="text" class="form-control" (change)="setUnsavedChanges()"
+        [(ngModel)] = "positionDetails.rate" id="rate" name="rate">
+      </div>
+    </form>
+
+    <div>
+
+      <div class="d-flex flex-row">
+        <div class="mainContainer mx-auto p-3 bg-white">
+          <p>Current qualified employees:</p>
+
+          <div *ngFor="let employee of qualifiedEmployees">
+            <mat-checkbox
+              [checked]="true"
+              [disabled]="true"
+            >
+              {{employee.preferredName}}, {{employee.lastName}}
+            </mat-checkbox>
+            <button type="button" class="btn btn-danger" (click)="openDeleteEmployeeDialog(employee)">Remove</button>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="mx-auto mb-3 text-center" style="width: fit-content;">
+          <p>Add employees:</p>
+          <input type="text" [(ngModel)] = "searchEmployeesValue" (ngModelChange)="searchEmployees()">
+        </div>
+        <div class="d-flex flex-row">
+
+          <div class="employeeContainer mx-auto bg-white">
+            <div *ngFor="let employee of filteredUnqualifiedEmployees" class="p-1">
+              <mat-checkbox
+                [(ngModel)] = "employee.selected"
+                [name]="employee.employee"
+                (change)="addNewEmployee(employee.employee)"
+              >
+                {{allEmployees.get(employee.employee)?.preferredName}}, {{allEmployees.get(employee.employee)?.lastName}}
+              </mat-checkbox>
+            </div>
+          </div>
+
+          <div *ngIf="newQualifiedEmployees.length > 0" class="employeeContainer mx-auto bg-white">
+            <div *ngFor="let employee of newQualifiedEmployees" class="p-1">
+              <mat-checkbox
+                [(ngModel)] = "employee.selected"
+                [name]="employee.employee"
+                (change)="deleteEmployeeFromNewList(employee.employee)"
+              >
+                {{allEmployees.get(employee.employee)?.preferredName}}, {{allEmployees.get(employee.employee)?.lastName}}
+              </mat-checkbox>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <div>
+        <button type="button" class="btn btn-danger mx-5" (click)="openDeletePositionDialog()">Delete position</button>
+        <button *ngIf="unsavedChanges" type="submit" class="btn btn-primary mx-5" (click)="updatePosition()">Update</button>
+        <button type="button" class="btn btn-dark mx-5" (click)="cancel()">Cancel</button>
+      </div>
+    </div>
+
+  </div>
+
+</ng-template>

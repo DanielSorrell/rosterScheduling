@@ -1,0 +1,765 @@
+[
+  {
+    "day": "Mon",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "02bc15f3-015e-46f5-a3ca-14e0781db167",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "0a5f8f3e-d877-4c97-9128-b0d0b2b041f6",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "9daa05fa-5aca-4851-9c0e-e27e5f764a24",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "b68c9519-8b04-4992-955c-e7d03c775179",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "a37ec67d-c5a7-40c4-9309-93c3a8de427e",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "e29fe153-3d6f-4d45-8e8f-f2edb745851a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "daa152f5-d6dc-49e8-9cd1-39ddc8ad7a04",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "f56b7999-6b73-49fa-b946-520934bdceb8",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Tue",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "446842e9-6841-4d18-9920-aefa0a011e68",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "22262e09-796a-4a4c-9385-5dc3849af8e1",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "97af945a-d93c-410a-8e54-5c767586c60b",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "df3fad4f-27c7-43c8-bea9-e7280dd6b7b5",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "beeb3b3a-89e5-4101-8958-646be3c2912d",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "c0688c8b-9687-49fd-a274-0249e8e7b24a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "9daa05fa-5aca-4851-9c0e-e27e5f764a24",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "e65c822d-f638-4d5e-b7ed-88c45b939b15",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Wed",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "02bc15f3-015e-46f5-a3ca-14e0781db167",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "0a5f8f3e-d877-4c97-9128-b0d0b2b041f6",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "9daa05fa-5aca-4851-9c0e-e27e5f764a24",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "b68c9519-8b04-4992-955c-e7d03c775179",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "a37ec67d-c5a7-40c4-9309-93c3a8de427e",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "f4ea0534-ecfd-41f4-8c2a-c049c9c0a2eb",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "daa152f5-d6dc-49e8-9cd1-39ddc8ad7a04",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "e65c822d-f638-4d5e-b7ed-88c45b939b15",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Thu",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "446842e9-6841-4d18-9920-aefa0a011e68",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "0a5f8f3e-d877-4c97-9128-b0d0b2b041f6",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "22262e09-796a-4a4c-9385-5dc3849af8e1",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "df3fad4f-27c7-43c8-bea9-e7280dd6b7b5",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "beeb3b3a-89e5-4101-8958-646be3c2912d",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "e29fe153-3d6f-4d45-8e8f-f2edb745851a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "daa152f5-d6dc-49e8-9cd1-39ddc8ad7a04",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "f56b7999-6b73-49fa-b946-520934bdceb8",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Fri",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "02bc15f3-015e-46f5-a3ca-14e0781db167",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "97af945a-d93c-410a-8e54-5c767586c60b",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "9daa05fa-5aca-4851-9c0e-e27e5f764a24",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "df3fad4f-27c7-43c8-bea9-e7280dd6b7b5",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "beeb3b3a-89e5-4101-8958-646be3c2912d",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "e29fe153-3d6f-4d45-8e8f-f2edb745851a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "e65c822d-f638-4d5e-b7ed-88c45b939b15",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "f56b7999-6b73-49fa-b946-520934bdceb8",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Sat",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "446842e9-6841-4d18-9920-aefa0a011e68",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "22262e09-796a-4a4c-9385-5dc3849af8e1",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "97af945a-d93c-410a-8e54-5c767586c60b",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "b68c9519-8b04-4992-955c-e7d03c775179",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "a37ec67d-c5a7-40c4-9309-93c3a8de427e",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "c0688c8b-9687-49fd-a274-0249e8e7b24a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "daa152f5-d6dc-49e8-9cd1-39ddc8ad7a04",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "e65c822d-f638-4d5e-b7ed-88c45b939b15",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  },
+  {
+    "day": "Sun",
+    "shifts": [
+      {
+        "position": "Manager",
+        "scheduledEmployeeID": "446842e9-6841-4d18-9920-aefa0a011e68",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "0a5f8f3e-d877-4c97-9128-b0d0b2b041f6",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "b68c9519-8b04-4992-955c-e7d03c775179",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Server",
+        "scheduledEmployeeID": "df3fad4f-27c7-43c8-bea9-e7280dd6b7b5",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 3
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "beeb3b3a-89e5-4101-8958-646be3c2912d",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Host",
+        "scheduledEmployeeID": "c0688c8b-9687-49fd-a274-0249e8e7b24a",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "97af945a-d93c-410a-8e54-5c767586c60b",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 1
+      },
+      {
+        "position": "Busser",
+        "scheduledEmployeeID": "f56b7999-6b73-49fa-b946-520934bdceb8",
+        "startTime": "09:00",
+        "endTime": "16:00",
+        "breaks": [
+          {
+            "startTime": "12:15",
+            "endTime": "12:45"
+          }
+        ],
+        "instance": 2
+      }
+    ]
+  }
+]
